@@ -6,82 +6,55 @@ icon: 'hand-wave'
 
 ## Welcome to the Redo API
 
-The Redo API provides programmatic access to manage returns, exchanges, refunds, shipments, and invoices for your store. Built on REST principles, our API uses JSON for requests and responses.
+The Redo API provides programmatic access to manage returns, exchanges, refunds, shipments, and invoices for your store.
 
 **Base URL:** `https://api.getredo.com/v2.2`
+**Version:** 2.2.1
 
-**Current Version:** 2.2.1
+## Quick Start
 
-## Authentication
-
-### API Endpoints
-
-All API endpoints are authenticated using the Bearer authorization scheme with your `REDO_API_SECRET`. You can find your API secret in your Redo dashboard.
-
-Include your API secret in the `Authorization` header of every request:
-
-```http
-GET /v2.2/stores/{storeId}/returns HTTP/1.1
-Authorization: Bearer 77bb7598b7a972475cc7c7e171ec33af
-Host: api.getredo.com
+```bash
+curl -X GET "https://api.getredo.com/v2.2/stores/{storeId}/returns" \
+  -H "Authorization: Bearer YOUR_API_SECRET"
 ```
 
-<Warning>
-  Keep your API secret secure. Never share it publicly or commit it to version control.
-</Warning>
+## Key Features
 
-### Webhooks
+<CardGroup cols={2}>
+  <Card title="Returns Management" icon="arrow-rotate-left" href="/api-reference/returns-list">
+    List, view, and process returns programmatically
+  </Card>
 
-Webhooks use Bearer authentication with a secret you provide when creating the webhook subscription. Redo will include this secret in the `Authorization` header when delivering webhook events to your endpoint:
+  <Card title="Shipment Labels" icon="box-taped" href="/api-reference/shipment-rates">
+    Generate prepaid return shipping labels
+  </Card>
 
-```http
-POST /events HTTP/1.1
-Authorization: Bearer subscriberauth123
-Host: subscriber.example.com
-```
+  <Card title="Webhooks" icon="webhook" href="/guides/webhooks">
+    Receive real-time notifications for return events
+  </Card>
 
-Webhook events are delivered in order for each individual subject (e.g., return). If your endpoint doesn't respond with a 2xx status code, the event will be retried multiple times before being discarded.
+  <Card title="Coverage Products" icon="shield-check" href="/api-reference/coverage-products">
+    Integrate returns coverage into your checkout
+  </Card>
+</CardGroup>
 
-## Response Format
+## Next Steps
 
-### Success Responses
+<Steps>
+  <Step title="Authentication">
+    Learn how to [authenticate your API requests](/api-reference/authentication)
+  </Step>
 
-Successful requests return JSON with a 2xx status code:
+  <Step title="Explore Endpoints">
+    Browse the API reference to see all available endpoints
+  </Step>
 
-```json
-{
-  "return": {
-    "id": "64df65d4c5a4ca3eff4b4e43",
-    "status": "pending",
-    "createdAt": "2023-08-18T12:00:00Z"
-  }
-}
-```
+  <Step title="Set Up Webhooks">
+    Configure [webhooks](/guides/webhooks) for real-time notifications
+  </Step>
+</Steps>
 
-### Error Responses
+## Support
 
-Errors follow [RFC 7807](https://datatracker.ietf.org/doc/html/rfc7807) Problem Details format and use the `application/problem+json` content type:
-
-```json
-{
-  "type": "about:blank",
-  "title": "Not Found",
-  "detail": "The requested return could not be found",
-  "instance": "/returns/invalid-id"
-}
-```
-
-## Pagination
-
-List endpoints support cursor-based pagination using these query parameters:
-
-- `page-size`: Number of items to return (default varies by endpoint)
-- `page-continue`: Cursor token from the previous response
-
-The `X-Page-Next` response header contains the cursor for the next page:
-
-```http
-X-Page-Next: eyJjcmVhdGVkQXQiOiIyMDIzLTA4LTE4VDEyOjAwOjAwWiJ9
-```
-
-To fetch the next page, pass this value as the `page-continue` parameter.
+- **Email:** engineering-admin@getredo.com
+- **Dashboard:** [app.getredo.com](https://app.getredo.com)
