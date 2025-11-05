@@ -15,33 +15,8 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
-            "pages": ["index", "quickstart", "development"]
-          },
-          {
             "group": "Integrations",
             "pages": ["guides/shopify-web-components", "guides/webhooks"]
-          },
-          {
-            "group": "Customization",
-            "pages": ["essentials/settings", "essentials/navigation"]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
           }
         ]
       },
@@ -133,7 +108,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:engineering-admin@getredo.com"
+        "href": "mailto:engineering@getredo.com"
       }
     ],
     "primary": {

@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "contact": {
-      "email": "engineering-admin@getredo.com",
+      "email": "engineering@getredo.com",
       "name": "Redo Engineering"
     },
     "description": "## Endpoints\n\nEndpoints are authenticated using the Bearer authorization scheme, using the\nREDO_API_SECRET.\n\n```txt\nGET /v2.2/resource HTTP/1.1\nAuthorization: Bearer 77bb7598b7a972475cc7c7e171ec33af\nHost: api.getredo.com\n```\n\n## Webhooks\n\nWebhooks are authenticated using the Bearer authorization scheme, using\na secret supplied by the subscriber.\n\n```txt\nPOST /events HTTP/1.1\nAuthorization: Bearer subscriberauth123\nHost: subscriber.example.com\n```\n\nWebhook events are delivered in order for each individual subject (e.g.\nreturn).\n\nIf the response is not a 2xx status code, the event will be retried multiple\ntimes before discarding it.\n",
